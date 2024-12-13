@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import TodoList from '../components/TodoList';
+import { Link } from 'react-router-dom'
 
 function TodoPage() {
   let data = [
@@ -62,7 +63,14 @@ const showAll = () => {
     </form>
     <TodoList todos={todos} toggleTodo={toggleTodo}  showAll={showAll}
     deleteTodo={deleteTodo}  showCompletedTodo={showCompletedTodo} showNotCompletedTodo={showNotCompletedTodo}/>
+    <Link to="/dnd">
+<button type="button" style={{marginTop: 50}} class=" bg-red-950 text-white font-bold m-10">
+Перейти к To-Do листу с Drag-and-Drop
+</button>
+</Link>
   </div>
+  
+
   );
 }
 

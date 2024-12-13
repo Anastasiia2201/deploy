@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { DragDropContext,
     Droppable,
     Draggable } from 'react-beautiful-dnd';
+import { Link } from 'react-router-dom'
 
 function DndPage() {
     const [columns, setColumns] = useState({
@@ -73,6 +74,7 @@ function DndPage() {
     };
 
     return (
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100%'   }}>
         <div style={{ display: 'flex', justifyContent: 'center', height: '100%' }}>
         <DragDropContext  onDragEnd={(result) => onDragEnd(result, columns, setColumns)}>
             {Object.entries(columns).map(([columnId, column], index) => {
@@ -124,7 +126,7 @@ function DndPage() {
                                                 color: 'white',
                                                 ...provided.draggableProps.style,}}>
                                             {item.content}
-                                            <button class="h-3 w-3 bg-red-950 text-white font-bold m-2" onClick={() => deleteTodo(columnId,index, item.id)}>delete</button>
+                                            <button class=" bg-red-950 text-white font-bold my-40" onClick={() => deleteTodo(columnId,index, item.id)}>delete</button>
                                             </div>
                                         );
                                     }}
@@ -140,7 +142,14 @@ function DndPage() {
             })}
         </DragDropContext>
         </div>
+        <Link to="/">
+     <button type="button" style={{marginTop: 50}} class=" bg-red-950 text-white font-bold m-10">
+     Перейти к обычному To-Do листу
+     </button>
+ </Link>
+ </div>
     );
+
 }
 
 export default DndPage;
